@@ -9,6 +9,19 @@ select * from pizza_toppings
 
 -- Questions:
 
+---------- PIZZA METRICS QUESTIONS ----------
+
+-- Q1. How many pizzas were ordered?
+
+select count(*) pizza_order_count from customer_orders_temp
+
+-- Q2. How many unique customer orders were made?
+
+select count(distinct(customer_id)) unique_customer_count from customer_orders_temp
+
+-- Q3. How many successful orders were delivered by each runner?
+
+
 
 
 
