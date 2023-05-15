@@ -57,3 +57,18 @@ into runner_orders_temp
 from runner_orders
 
 
+-- In table runner_orders_temp,
+-- column pickup_time is of varchar type, converting it to datetime.
+-- column distance is of varchar type, converting it to float.
+-- column duration is of varchar type, converting it to int.
+
+alter table runner_orders_temp
+alter column pickup_time datetime
+
+alter table runner_orders_temp
+alter column distance float
+
+alter table runner_orders_temp
+alter column duration int
+
+
