@@ -1,7 +1,5 @@
 ---------- Pizza Runner Case Study ----------
 
-select * from customer_orders
-
 -- Data Cleaning and Transformation
 
 -- In customers_order table, exclusions and extras columns has missing/ blank spaces ' ' and null values.
@@ -71,4 +69,4 @@ alter column distance float
 alter table runner_orders_temp
 alter column duration int
 
-
+-----------------------------------------------------------------------------------------------------------------
