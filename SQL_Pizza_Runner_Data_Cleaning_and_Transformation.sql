@@ -69,4 +69,9 @@ alter column distance float
 alter table runner_orders_temp
 alter column duration int
 
+-- Converting data type from text to varchar of column pizza_name in table pizza_names.
+
+alter table pizza_names
+alter column pizza_name varchar(20)
+
 -----------------------------------------------------------------------------------------------------------------
