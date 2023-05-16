@@ -44,3 +44,36 @@ order by a.customer_id
 
 -- Q6. What was the maximum number of pizzas delivered in a single order?
 
+select a.order_id, count(*) as no_of_pizzas 
+from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
+group by a.order_id
+
+-- Q7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
+
+select a.customer_id,
+sum(
+case
+when a.exclusions <> ' ' or a.extras <> ' ' then 1
+else 0
+end) as at_least_1_change,
+sum(
+case
+when a.exclusions = ' ' or a.extras = ' ' then 1
+else 0
+end) as no_change
+from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
+group by a.customer_id
+
+-- Q8. How many pizzas were delivered that had both exclusions and extras?
+
+select *
+from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
