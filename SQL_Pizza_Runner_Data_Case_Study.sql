@@ -72,8 +72,12 @@ group by a.customer_id
 
 -- Q8. How many pizzas were delivered that had both exclusions and extras?
 
-select *
+select count(*) as pizzas_delivered
 from customer_orders_temp a
 left join runner_orders_temp b
 on a.order_id = b.order_id
-where b.cancellation = ' '
+where b.cancellation = ' ' and a.exclusions <> ' ' and a.extras <> ' '
+
+--Q9. What was the total volume of pizzas ordered for each hour of the day?
+
+
