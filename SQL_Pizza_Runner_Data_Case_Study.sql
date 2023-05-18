@@ -99,6 +99,13 @@ group by DATENAME(WEEKDAY, order_time)
 -------------------- B. RUNNER AND CUSTOMER EXPERIENCE --------------------
 
 
+--Q1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
 
+SET DATEFIRST 1;
+
+select DATEPART(WEEK, registration_date) as week, count(*) runners_count from runners
+group by DATEPART(WEEK, registration_date)
+
+--Q2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
 
 
