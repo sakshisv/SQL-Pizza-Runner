@@ -88,4 +88,21 @@ group by DATEPART(hour, order_time)
 
 --Q10. What was the volume of orders for each day of the week?
 
+select DATEPART(WEEKDAY, order_time) as day_of_the_week, count(*) total_pizzas_delivered
+from customer_orders_temp 
+group by DATEPART(WEEKDAY, order_time)
 
+SELECT DATEPART(DAY, [order_time]) AS day_of_week, COUNT(order_id) AS total_pizzas_ordered
+FROM customer_orders_temp
+GROUP BY DATEPART(DAY, [order_time])
+
+SELECT DATENAME(WEEKDAY,[order_time]) as weekday, 
+       COUNT (order_id) as pizza_count
+FROM customer_orders_temp
+GROUP BY DATENAME(WEEKDAY,[order_time]);
+
+SELECT 
+  FORMAT(DATEADD(DAY, 2, order_time),'dddd') AS day_of_week, -- add 2 to adjust 1st day of the week as Monday
+  COUNT(order_id) AS total_pizzas_ordered
+FROM customer_orders_temp
+GROUP BY FORMAT(DATEADD(DAY, 2, order_time),'dddd');
