@@ -108,4 +108,14 @@ group by DATEPART(WEEK, registration_date)
 
 --Q2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
 
+select b.runner_id, AVG(DATEDIFF(MINUTE, a.order_time, b.pickup_time)) time
+from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
+group by b.runner_id
+
+--Q3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
+
+
 
