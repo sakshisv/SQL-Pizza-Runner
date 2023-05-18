@@ -1,5 +1,7 @@
 -------- Pizza Runner Case Study --------
 
+use Pizza_Runner
+
 select * from runners
 select * from customer_orders_temp
 select * from runner_orders_temp
@@ -79,5 +81,11 @@ on a.order_id = b.order_id
 where b.cancellation = ' ' and a.exclusions <> ' ' and a.extras <> ' '
 
 --Q9. What was the total volume of pizzas ordered for each hour of the day?
+
+select DATEPART(hour, order_time) as hour_of_the_day, count(*) total_pizzas_delivered
+from customer_orders_temp 
+group by DATEPART(hour, order_time)
+
+--Q10. What was the volume of orders for each day of the week?
 
 
