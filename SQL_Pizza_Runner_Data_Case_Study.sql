@@ -133,4 +133,11 @@ group by no_of_pizzas
 
 --Q4. What was the average distance travelled for each customer?
 
+select a.customer_id, avg(b.distance) avg_distance
+from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
+group by a.customer_id
 
+--Q5. 
