@@ -150,3 +150,18 @@ where b.cancellation = ' '
 
 --Q6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
 
+select b.runner_id, a.order_id, round(avg(b.distance/b.duration * 60),2) avg_speed
+from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
+group by b.runner_id, a.order_id
+
+
+
+select *
+from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
+
