@@ -140,4 +140,13 @@ on a.order_id = b.order_id
 where b.cancellation = ' '
 group by a.customer_id
 
---Q5. 
+--Q5. What was the difference between the longest and shortest delivery times for all orders?
+
+select max(b.duration) - min(b.duration) time_difference
+from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
+
+--Q6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
+
