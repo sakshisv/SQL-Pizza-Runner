@@ -117,12 +117,20 @@ group by b.runner_id
 
 --Q3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
 
-select a.order_id, count(a.pizza_id) no_of_pizzas, AVG(DATEDIFF(MINUTE, a.order_time, b.pickup_time)) avg_time
+With relation_cte as (
+select a.order_id, count(a.order_id) no_of_pizzas, DATEDIFF(MINUTE, a.order_time, b.pickup_time) time_diff
 from customer_orders_temp a
 left join runner_orders_temp b
 on a.order_id = b.order_id
 where b.cancellation = ' '
-group by a.order_id
+group by a.order_id, a.order_time, b.pickup_time)
 
-select * from customer_orders_temp
-select * from runner_orders_temp
+select no_of_pizzas, AVG(time_diff) avg_time
+from relation_cte
+group by no_of_pizzas
+
+--Relationship: the more the pizzas contained in an order, the longer it takes for that order to get ready.
+
+--Q4. What was the average distance travelled for each customer?
+
+
