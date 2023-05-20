@@ -181,6 +181,36 @@ create table pizza_recipes_temp(
 pizza_id int,
 toppings int
 )
+insert into pizza_recipes_temp(pizza_id, toppings)
+values
+(1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(1,6),
+(1,8),
+(1,10),
+(2,4),
+(2,6),
+(2,7),
+(2,9),
+(2,11),
+(2,12)
+
+-- The above code gives new table called pizza_recipes_temp with normalized toppings data.
+
+select * from pizza_recipes_temp
+
+-- Finding standard toppings for each pizza.
+
+select a.pizza_id, c.pizza_name, string_agg(b.topping_name, ', ') as standard_ignredients 
+from pizza_recipes_temp a
+left join pizza_toppings b
+on a.toppings = b.topping_id
+left join pizza_names c
+on a.pizza_id = c.pizza_id
+group by a.pizza_id, c.pizza_name
 
 
 select * from runners
