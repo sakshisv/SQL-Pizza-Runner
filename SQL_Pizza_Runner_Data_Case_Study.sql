@@ -157,11 +157,21 @@ on a.order_id = b.order_id
 where b.cancellation = ' '
 group by b.runner_id, a.order_id
 
+--Q7. What is the successful delivery percentage for each runner?
 
-
-select *
+select b.runner_id, 
+sum(case
+when distance = 0 THEN 0
+    ELSE 1
+end)/ count(*) as success_pct
 from customer_orders_temp a
 left join runner_orders_temp b
 on a.order_id = b.order_id
-where b.cancellation = ' '
+group by b.runner_id
 
+select * from runner_orders_temp
+
+select count(a.order_id) as total_count from customer_orders_temp a
+left join runner_orders_temp b
+on a.order_id = b.order_id
+where b.cancellation = ' '
