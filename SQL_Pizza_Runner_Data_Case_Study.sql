@@ -172,7 +172,7 @@ group by runner_id
 -------------------- C. INGREDIENT OPTIMISATION --------------------
 
 
---Q1. What are the standard ingredients for each pizza?
+--Q. What are the standard ingredients for each pizza?
 
 -- Normalize the pizza_recipes table such that each row has pizza_id and its corresponding one topping.
 -- So that we can join it with pizza_toppings table to get the topping name.
@@ -213,9 +213,4 @@ on a.pizza_id = c.pizza_id
 group by a.pizza_id, c.pizza_name
 
 
-select * from runners
-select * from customer_orders_temp
-select * from runner_orders_temp
-select * from pizza_names
-select * from pizza_recipes
-select * from pizza_toppings
+--------------------------------------------------------------------------------------------------------
