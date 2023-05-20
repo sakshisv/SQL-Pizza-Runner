@@ -174,7 +174,14 @@ group by runner_id
 
 --Q1. What are the standard ingredients for each pizza?
 
-select * 
+-- Normalize the pizza_recipes table such that each row has pizza_id and its corresponding one topping.
+-- So that we can join it with pizza_toppings table to get the topping name.
+
+create table pizza_recipes_temp(
+pizza_id int,
+toppings int
+)
+
 
 select * from runners
 select * from customer_orders_temp

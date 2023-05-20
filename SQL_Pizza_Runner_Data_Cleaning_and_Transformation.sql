@@ -81,5 +81,4 @@ alter column toppings varchar(max)
 alter table pizza_toppings
 alter column topping_name varchar(20)
 
-
 -----------------------------------------------------------------------------------------------------------------
